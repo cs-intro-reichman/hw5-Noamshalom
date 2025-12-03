@@ -4,13 +4,21 @@ public class Wordle {
     public static String[] readDictionary(String filename) {
     In in = new In(filename);
 
-    String[] dict = new String[258];
-    for (int i = 0; i < 258; i++) {
-        dict[i] = in.readString();
+    String[] temp = new String[10000];
+    int count = 0;
+
+    while (!in.isEmpty()) {
+        temp[count++] = in.readString();
+    }
+
+    String[] dict = new String[count];
+    for (int i = 0; i < count; i++) {
+        dict[i] = temp[i];
     }
 
     return dict;
 }
+
 
     // Choose a random secret word from the dictionary. 
     // Hint: Pick a random index between 0 and dict.length (not including) using Math.random()
